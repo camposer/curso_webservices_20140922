@@ -51,7 +51,7 @@
   </wsdl:binding>
   <wsdl:service name="HolaMundoSoapImplService">
     <wsdl:port binding="tns:HolaMundoSoapImplServiceSoapBinding" name="HolaMundoSoapImplPort">
-      <soap:address location="http://localhost:8080/Basico/service/HolaMundoSoap"/>
+      <soap:address location="http://localhost:8090/Basico/service/HolaMundoSoap"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

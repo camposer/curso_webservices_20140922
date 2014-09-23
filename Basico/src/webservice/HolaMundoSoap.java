@@ -2,7 +2,7 @@ package webservice;
 
 import javax.jws.WebService;
 
-@WebService
+@WebService()
 public interface HolaMundoSoap {
 	public String saludar(String nombre);
 }
