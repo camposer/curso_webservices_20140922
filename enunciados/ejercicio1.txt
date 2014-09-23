@@ -14,9 +14,11 @@ Pasos:
 
 NOTA: Basta con agregar las anotaciones @WebService a la SEInterface y el SEImplementation
 
+2.- Implementar un cliente de consola para el servicio web de Calculadora
+
 ---
 
-2.- Utilizando anotaciones, alterar el WSDL resultante para cambiar:
+3.- Utilizando anotaciones, alterar el WSDL resultante para cambiar:
 - TargetNamespace del WSDL
 - WebParam
 - OperationName
