@@ -1,0 +1,15 @@
+Cómo configuramos el proyecto
+=============================
+
+Inicialmente teníamos un proyecto Web Dinámico con soporte para Maven. Luego, la estructura de carpetas no era la típica que conseguimos en proyecto de este tipo, por lo que inicialmente cambiamos la estructura, a saber:
+
+	- src/main/java/ (código fuente de la app)
+	- src/main/resources/ (ficheros de config de la app)
+	- src/test/java/ (código fuente de pruebas)
+	- src/test/resources/ (ficheros de config de pruebas)
+
+Una vez creadas las carpetas, copiamos todos los fuentes dentro de src/main/java y se configuramos el proyecto en Eclipse para que buscase los fuentes dentro de las nuevas carpetas (Project properties -> Java Build Path -> Source)
+
+Modificamos el POM para indicar la nueva estructura de carpetas y las dependencias de pruebas (junit y spring-test).
+
+Dentro de src/test/java agregamos una clase de pruebas para PersonaService y dentro de /src/test/resources un nuevo fichero de configuración de Spring
