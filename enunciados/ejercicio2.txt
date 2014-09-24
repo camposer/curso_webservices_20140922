@@ -18,4 +18,5 @@ Configuración del Web Service
 
 Creación del cliente
 9.- Cree un cliente de consola que soporte las operaciones de Agregar y Obtener Todos
+10.- Agregue al cliente las operaciones de eliminar, obtener uno y modificar. Fundamental: vea el código fuente y pregunte cualquier cosa que no haya quedado clara.
 

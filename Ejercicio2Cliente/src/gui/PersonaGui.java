@@ -9,6 +9,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import webservice.PersonaSoap;
 
 public class PersonaGui {
+	private static final int OP_AGREGAR = 0;
+	private static final int OP_MODIFICAR = 1;
 	private PersonaSoap personaSoap;
 	private Scanner scanner;
 	
@@ -29,35 +31,41 @@ public class PersonaGui {
 		while (true) {
 			System.out.println();
 			System.out.println("1. Agregar");
-			System.out.println("2. Obtener todos");
-			System.out.println("3. Salir");
+			System.out.println("2. Modificar");
+			System.out.println("3. Eliminar");
+			System.out.println("4. Obtener uno");
+			System.out.println("5. Obtener todos");
+			System.out.println("6. Salir");
 			System.out.print("? ");
 
 			String opcion = scanner.nextLine();
 			
-			if (opcion.equals("3"))
+			if (opcion.equals("6"))
 				break;
 			
 			if (opcion.equals("1"))
-				agregar();
+				guardar(OP_AGREGAR);
 			else if (opcion.equals("2"))
+				guardar(OP_MODIFICAR);
+			else if (opcion.equals("3"))
+				eliminar();
+			else if (opcion.equals("4"))
+				obtener();
+			else if (opcion.equals("5"))
 				obtenerTodos();
 		}
 		
 	}
 	
-	private void obtenerTodos() {
-		List<webservice.Persona> personas = 
-				personaSoap.obtenerPersonas();
+	private void guardar(int op) {
+		int id = -1;
 		
-		for (webservice.Persona p : personas) {
-			System.out.println("[ id = " + p.getId() + 
-					", nombre = " + p.getNombre() + 
-					", apellido = " + p.getApellido() + " ]");
+		if (op == OP_MODIFICAR) {
+			System.out.print("Id? ");
+			String sid = scanner.nextLine();
+			id = Integer.parseInt(sid);
 		}
-	}
-
-	private void agregar() {
+		
 		System.out.print("Nombre? ");
 		String nombre = scanner.nextLine();
 
@@ -68,7 +76,46 @@ public class PersonaGui {
 		p.setNombre(nombre);
 		p.setApellido(apellido);
 		
-		personaSoap.agregarPersona(p);
+		if (op == OP_MODIFICAR) {
+			p.setId(id);
+			
+			personaSoap.modificarPersona(p);
+		} else {
+			personaSoap.agregarPersona(p);
+			
+		}
+	}
+
+	private void eliminar() {
+		System.out.print("Id? ");
+		String sid = scanner.nextLine();
+		int id = Integer.parseInt(sid);
+		
+		personaSoap.eliminarPersona(id);
+	}
+
+	private void obtener() {
+		System.out.print("Id? ");
+		String sid = scanner.nextLine();
+		int id = Integer.parseInt(sid);
+		
+		webservice.Persona p = 
+				personaSoap.obtenerPersona(id);
+		
+		System.out.println("[ id = " + p.getId() + 
+				", nombre = " + p.getNombre() + 
+				", apellido = " + p.getApellido() + " ]");
+	}
+
+	private void obtenerTodos() {
+		List<webservice.Persona> personas = 
+				personaSoap.obtenerPersonas();
+		
+		for (webservice.Persona p : personas) {
+			System.out.println("[ id = " + p.getId() + 
+					", nombre = " + p.getNombre() + 
+					", apellido = " + p.getApellido() + " ]");
+		}
 	}
 
 	public static void main(String[] args) {
