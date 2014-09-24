@@ -25,7 +25,7 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
 	@Override
-	public void eliminarPersoan(Integer id) {
+	public void eliminarPersona(Integer id) {
 		personaDao.eliminar(id);
 	}
 

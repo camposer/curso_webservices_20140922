@@ -1,10 +1,13 @@
-package service;
+package webservice;
 
 import java.util.List;
 
+import javax.jws.WebService;
+
 import model.Persona;
 
-public interface PersonaService {
+@WebService
+public interface PersonaSoap {
 	public void agregarPersona(Persona p);
 	public void modificarPersona(Persona p);
 	public void eliminarPersona(Integer id);

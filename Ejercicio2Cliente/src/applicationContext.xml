@@ -9,17 +9,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
 http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
 
-	<!-- BEGIN: Importando clases del BUS --><!-- Requerido! -->
-	<import resource="classpath:META-INF/cxf/cxf.xml" />
-	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
-	<!-- END: Importando clases del BUS -->
-	
-	<context:annotation-config/><!-- Habilita las anotaciones -->
-	<context:component-scan base-package="dao"/><!-- Buscará todas las clases anotadas con (Ej. @Component) y creará las instancias correspondientes -->
-	<context:component-scan base-package="service"/>
-	
-	<jaxws:endpoint
-		implementor="webservice.PersonaSoapImpl"
-		address="/PersonaSoap" />
-
+	<jaxws:client id="personaSoapClient"
+		serviceClass="webservice.PersonaSoap"
+		address="http://localhost:8090/Persona/service/PersonaSoap" />
 </beans>

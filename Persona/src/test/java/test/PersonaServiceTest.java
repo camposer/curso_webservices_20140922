@@ -35,7 +35,7 @@ public class PersonaServiceTest {
 			
 			if (condicion) {
 				Assert.assertTrue(condicion);
-				personaService.eliminarPersoan(p1.getId());
+				personaService.eliminarPersona(p1.getId());
 				break;
 			}
 		}
