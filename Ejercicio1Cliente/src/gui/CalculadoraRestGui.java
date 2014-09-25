@@ -5,14 +5,14 @@ import java.util.Scanner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import webservice.CalculadoraSoap;
+import webservice.CalculadoraRest;
 
-public class CalculadoraGui {
-	private CalculadoraSoap calculadoraSoapClient;
+public class CalculadoraRestGui {
+	private CalculadoraRest calculadoraRestClient;
 	private Scanner scanner;
 	
 	@SuppressWarnings("resource")
-	public CalculadoraGui() {
+	public CalculadoraRestGui() {
 		// Cargando la clase que me permite leer de la consola
 		this.scanner = new Scanner(System.in);
 		
@@ -20,8 +20,8 @@ public class CalculadoraGui {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		// Pidiendo el cliente al contenedor 
-		this.calculadoraSoapClient = 
-				ctx.getBean("calculadoraSoapClient", CalculadoraSoap.class);
+		this.calculadoraRestClient = 
+				ctx.getBean("calculadoraRestClient", CalculadoraRest.class);
 	}
 	
 	public void iniciar() {
@@ -49,22 +49,22 @@ public class CalculadoraGui {
 			
 			if (opcion.equals("1"))
 				System.out.println(a + " + " + b + " = " + 
-						calculadoraSoapClient.sumar(a, b));
+						calculadoraRestClient.sumar(a, b).getResultado());
 			else if (opcion.equals("2"))
 				System.out.println(a + " - " + b + " = " + 
-						calculadoraSoapClient.restar(a, b));
+						calculadoraRestClient.restar(a, b).getResultado());
 			else if (opcion.equals("3"))
 				System.out.println(a + " * " + b + " = " + 
-						calculadoraSoapClient.multiplicar(a, b));
+						calculadoraRestClient.multiplicar(a, b).getResultado());
 			else if (opcion.equals("4"))
 				System.out.println(a + " / " + b + " = " + 
-						calculadoraSoapClient.dividir(a, b));
+						calculadoraRestClient.dividir(a, b).getResultado());
 
 		}
 		
 	}
 	
 	public static void main(String[] args) {
-		new CalculadoraGui().iniciar();
+		new CalculadoraRestGui().iniciar();
 	}
 }

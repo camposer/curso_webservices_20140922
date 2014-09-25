@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="js/jquery-1.11.1.js"></script>
+	<script>
+		const BASE_URL = "/Ejercicio1/service/calculadora";
+	
+		var calcular = function() {
+			var a = $("#op1").val();
+			var b = $("#op2").val();
+			var operacion = $("#operacion").val();
+			
+			if (operacion != -1) {
+				var url = BASE_URL + "/" + operacion + "/" + 
+					a + "/" + b;
+				
+				var config = {
+					type: "get",
+					dataType: "json"
+				};
+				
+				var ajax = $.ajax(url , config);
+				ajax.done(function(resp) {
+					var texto = "operación = " + resp.operacion + "<br/>" +
+						"op1 = " + resp.op1 + "<br/>" +
+						"op2 = " + resp.op2 + "<br/>" +
+						"resultado = " + resp.resultado;
+					
+					$("#resultado").html(texto);
+				});
+			}
+		};
+	
+		$(document).ready(function() {
+			$("#btnCalcular").click(calcular);
+		});
+	</script>
+</head>
+<body>
+	<h1>Calculadora</h1>
+	<table>
+		<tr>
+			<td>Op1</td>
+			<td><input type="number" name="op1" id="op1"/></td>
+		</tr>
+		<tr>
+			<td>Op2</td>
+			<td><input type="number" name="op2" id="op2"/></td>
+		</tr>
+		<tr>
+			<td>Operación</td>
+			<td>
+				<select id="operacion">
+					<option value="-1">Seleccione una operación</option>
+					<option value="sumar">Sumar</option>
+					<option value="restar">Restar</option>
+					<option value="multiplicar">Multiplicar</option>
+					<option value="dividir">Dividir</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" id="btnCalcular" value="Calcular">
+			</td>
+		</tr>
+	</table>
+	<hr/>
+	<div id="resultado"></div>
+	
+</body>
+</html>

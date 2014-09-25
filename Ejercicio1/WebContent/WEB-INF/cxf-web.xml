@@ -14,6 +14,9 @@ http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 	<!-- END: Importando clases del BUS -->
 	
+	<context:annotation-config/>
+	<context:component-scan base-package="service"/>
+	
 	<jaxws:endpoint
 		implementor="webservice.HolaMundoSoapImpl"
 		address="/HolaMundoSoap" />
@@ -21,4 +24,20 @@ http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
 	<jaxws:endpoint
 		implementor="webservice.CalculadoraSoapImpl"
 		address="/CalculadoraSoap" />
+	
+	<!-- REST -->	
+	<bean id="calculadoraRest" class="webservice.CalculadoraRestImpl" />
+	
+	<!-- Le permite a CXF producir y consumir JSON -->
+	<bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
+	
+	<jaxrs:server address="/calculadora">
+		<jaxrs:serviceBeans>
+			<ref bean="calculadoraRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean='jsonProvider' />
+		</jaxrs:providers>
+	</jaxrs:server>
+	
 </beans>

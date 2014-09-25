@@ -16,6 +16,7 @@ var personas = [
 	{ 
 		nombre: "Juan", 
 		apellido: "Pérez"
+		edad: 34,
 	}, 
 	{ 
 		nombre: "maría", 

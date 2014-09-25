@@ -7,6 +7,7 @@
     <properties>
 		<cxf.version>2.7.7</cxf.version>
 		<spring.version>3.2.4.RELEASE</spring.version>
+		<jackson-jaxrs.version>1.5.7</jackson-jaxrs.version>		
 	</properties>
 
 	<dependencies>
@@ -16,12 +17,23 @@
 			<artifactId>cxf-rt-frontend-jaxws</artifactId>
 			<version>${cxf.version}</version>
 		</dependency>
+		<dependency><!-- REST -->
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>		
 		<dependency><!-- Core -->
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-transports-http</artifactId>
 			<version>${cxf.version}</version>
 		</dependency>
 		<!-- END: CXF -->
+
+		<dependency><!-- Permite producir y consumir JSON (para JAX-RS) -->
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<version>${jackson-jaxrs.version}</version>
+		</dependency>
 
 		<!-- BEGIN: Spring -->
 		<dependency>

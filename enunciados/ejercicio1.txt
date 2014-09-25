@@ -24,5 +24,9 @@ NOTA: Basta con agregar las anotaciones @WebService a la SEInterface y el SEImpl
 - OperationName
 - Cambiar y ver la diferencia entre estilo de Binding RPC y Document
 
+---
 
+4.- Instalar y probar la API REST HolaMundo con el RESTClient
+
+5.- Implementar un servicio REST para Calculadora
 
