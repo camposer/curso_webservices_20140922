@@ -66,6 +66,9 @@ http://www.asjava.com/web-services/cxf-interceptor-read-http-header/
 - REST
 http://es.wikipedia.org/wiki/Representational_State_Transfer
 
+- REST-ful URI design
+http://redrata.com/restful-uri-design/
+
 - Artículo con ejemplo de aplicación RESTful
 http://camposer-alt.blogspot.com.es/2012/08/rest-express-examplessqlite.html
 
