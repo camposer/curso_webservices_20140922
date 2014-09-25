@@ -30,3 +30,7 @@ NOTA: Basta con agregar las anotaciones @WebService a la SEInterface y el SEImpl
 
 5.- Implementar un servicio REST para Calculadora
 
+
+Para probar el cliente REST con AJAX deben ejecutar:
+
+http://localhost:8090/Ejercicio1/calculadora.html
