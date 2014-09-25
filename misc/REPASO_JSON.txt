@@ -1,0 +1,24 @@
+REPASO JSON
+===========
+
+- JSON -> JavaScript Object Notation
+
+var p = {
+	nombre: "Juan"
+	apellido: "Pérez",
+	edad: 34
+};
+
+alert(p.nombre); // => Juan
+alert(p.apellido); // => Pérez
+
+var personas = [ 
+	{ 
+		nombre: "Juan", 
+		apellido: "Pérez"
+	}, 
+	{ 
+		nombre: "maría", 
+		apellido: "García" 
+	}
+];

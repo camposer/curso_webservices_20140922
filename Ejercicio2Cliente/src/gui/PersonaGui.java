@@ -1,7 +1,15 @@
 package gui;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Scanner;
+
+import javax.activation.DataHandler;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -57,6 +65,7 @@ public class PersonaGui {
 		
 	}
 	
+	@SuppressWarnings("restriction")
 	private void guardar(int op) {
 		int id = -1;
 		
@@ -72,9 +81,17 @@ public class PersonaGui {
 		System.out.print("Apellido? ");
 		String apellido = scanner.nextLine();
 		
+		System.out.print("Imagen (ruta)? ");
+		String ruta = scanner.nextLine();
+
 		webservice.Persona p = new webservice.Persona();
 		p.setNombre(nombre);
 		p.setApellido(apellido);
+		try {
+			p.setAvatar(new DataHandler(new URL(ruta)));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
 		
 		if (op == OP_MODIFICAR) {
 			p.setId(id);
@@ -107,6 +124,7 @@ public class PersonaGui {
 				", apellido = " + p.getApellido() + " ]");
 	}
 
+	@SuppressWarnings("restriction")
 	private void obtenerTodos() {
 		List<webservice.Persona> personas = 
 				personaSoap.obtenerPersonas();
@@ -115,6 +133,20 @@ public class PersonaGui {
 			System.out.println("[ id = " + p.getId() + 
 					", nombre = " + p.getNombre() + 
 					", apellido = " + p.getApellido() + " ]");
+			
+			if (p.getAvatar() != null) {
+				DataHandler dh = p.getAvatar();
+				File archivoSalida = new File("tmp/avatar-" +
+						p.getId() + ".jpg");
+				try {
+					Files.copy(dh.getInputStream(),
+							archivoSalida.toPath(),
+							StandardCopyOption.REPLACE_EXISTING);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
 		}
 	}
 

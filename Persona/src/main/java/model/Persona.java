@@ -2,14 +2,11 @@ package model;
 
 import javax.activation.DataHandler;
 import javax.xml.bind.annotation.XmlMimeType;
-import javax.xml.bind.annotation.XmlType;
 
-@XmlType
 public class Persona {
 	private Integer id;
 	private String nombre;
 	private String apellido;
-	@XmlMimeType("application/octet-scream")
 	private DataHandler avatar;
 	
 	public Integer getId() {
@@ -30,6 +27,7 @@ public class Persona {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+	@XmlMimeType("application/octet-scream")
 	public DataHandler getAvatar() {
 		return avatar;
 	}

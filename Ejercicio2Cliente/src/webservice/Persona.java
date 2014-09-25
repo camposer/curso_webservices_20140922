@@ -1,8 +1,10 @@
 
 package webservice;
 
+import javax.activation.DataHandler;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlMimeType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -17,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="apellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="avatar" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -30,12 +33,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "persona", propOrder = {
     "apellido",
+    "avatar",
     "id",
     "nombre"
 })
 public class Persona {
 
     protected String apellido;
+    @XmlMimeType("application/octet-scream")
+    protected DataHandler avatar;
     protected Integer id;
     protected String nombre;
 
@@ -61,6 +67,30 @@ public class Persona {
      */
     public void setApellido(String value) {
         this.apellido = value;
+    }
+
+    /**
+     * Gets the value of the avatar property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DataHandler }
+     *     
+     */
+    public DataHandler getAvatar() {
+        return avatar;
+    }
+
+    /**
+     * Sets the value of the avatar property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DataHandler }
+     *     
+     */
+    public void setAvatar(DataHandler value) {
+        this.avatar = value;
     }
 
     /**

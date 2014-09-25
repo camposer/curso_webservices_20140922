@@ -16,6 +16,7 @@ public class PersonaServiceImpl implements PersonaService {
 
 	@Override
 	public void agregarPersona(Persona p) {
+		// FIXME: Hacer algo con el avatar!!!
 		personaDao.agregar(p);
 	}
 
