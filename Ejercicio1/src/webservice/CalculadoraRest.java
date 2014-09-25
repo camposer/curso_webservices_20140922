@@ -12,22 +12,22 @@ public interface CalculadoraRest {
 	@GET
 	@Path("/sumar/{a}/{b}")
 	public CalculadoraResp sumar(
-			@PathParam("a") float a, @PathParam("a") float b);
+			@PathParam("a") float a, @PathParam("b") float b);
 
 
 	@GET
 	@Path("/restar/{a}/{b}")
 	public CalculadoraResp restar(
-			@PathParam("a") float a, @PathParam("a") float b);
+			@PathParam("a") float a, @PathParam("b") float b);
 	
 	@GET
 	@Path("/multiplicar/{a}/{b}")
 	public CalculadoraResp multiplicar(
-			@PathParam("a") float a, @PathParam("a") float b);
+			@PathParam("a") float a, @PathParam("b") float b);
 	
 	@GET
 	@Path("/dividir/{a}/{b}")
 	public CalculadoraResp dividir(
-			@PathParam("a") float a, @PathParam("a") float b);
+			@PathParam("a") float a, @PathParam("b") float b);
 	
 }
